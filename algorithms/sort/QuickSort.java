@@ -3,20 +3,20 @@ package sort;
 /**
  * @author Fcb
  * @date 2019/3/8
- * @description 快速排序
+ * @description 自己靠感觉手写的快速排序
  */
 public class QuickSort {
 
     public void sort(int[] arr){
-        int l = 0;
-        int r = arr.length;
-        while (l < r){
-            int part = part(arr, l, r);
-
-        }
+        part(arr, 0, arr.length);
     }
 
-    public int part(int[] arr, int l, int r){
+    public void part(int[] arr, int l, int r){
+        if (l == r){
+            return ;
+        }
+        int left = l;
+        int right = r;
         int i = arr[l];
         while (l != r){
             while (r > l && arr[--r] > i);
@@ -26,8 +26,10 @@ public class QuickSort {
             }
             exchange(arr, l, r);
         }
-        exchange(arr, i, l);
-        return l;
+        exchange(arr, left, l);
+        part(arr, left, l);
+        part(arr, l + 1, right);
+        return ;
     }
 
     private void exchange(int[] arr, int l, int r) {
