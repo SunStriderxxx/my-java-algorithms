@@ -1,5 +1,7 @@
 import org.junit.Test;
+import sort.BubbleSort;
 import sort.QuickSort;
+import sort.Sort;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -15,15 +17,29 @@ public class MyTest {
 
     }
 
+    private int[] makeArr(){
+        int[] arr = new int[30];
+        Random random = new Random();
+        for (int i = 0; i < 30; i++){
+            arr[i] = random.nextInt(30);
+        }
+        return arr;
+    }
+
     @Test
     public void quickSortTest(){
-        int[] arr = new int[100];
-        Random random = new Random();
-        for (int i = 0; i < 100; i++){
-            arr[i] = random.nextInt(100);
-        }
+        int[] arr = makeArr();
         System.out.println(Arrays.toString(arr));
-        QuickSort sort = new QuickSort();
+        Sort sort = new QuickSort();
+        sort.sort(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+
+    @Test
+    public void bubbleSortTest(){
+        int[] arr = makeArr();
+        System.out.println(Arrays.toString(arr));
+        Sort sort = new BubbleSort();
         sort.sort(arr);
         System.out.println(Arrays.toString(arr));
     }

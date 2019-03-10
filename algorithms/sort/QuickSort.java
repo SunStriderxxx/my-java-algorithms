@@ -5,8 +5,9 @@ package sort;
  * @date 2019/3/8
  * @description 自己靠感觉手写的快速排序
  */
-public class QuickSort {
+public class QuickSort implements Sort{
 
+    @Override
     public void sort(int[] arr){
         part(arr, 0, arr.length);
     }
