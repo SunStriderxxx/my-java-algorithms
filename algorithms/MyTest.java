@@ -1,6 +1,7 @@
 import org.junit.Test;
 import sort.BubbleSort;
 import sort.QuickSort;
+import sort.SelectionSort;
 import sort.Sort;
 
 import java.util.Arrays;
@@ -18,10 +19,10 @@ public class MyTest {
     }
 
     private int[] makeArr(){
-        int[] arr = new int[30];
+        int[] arr = new int[20];
         Random random = new Random();
-        for (int i = 0; i < 30; i++){
-            arr[i] = random.nextInt(30);
+        for (int i = 0; i < 20; i++){
+            arr[i] = random.nextInt(20);
         }
         return arr;
     }
@@ -40,6 +41,15 @@ public class MyTest {
         int[] arr = makeArr();
         System.out.println(Arrays.toString(arr));
         Sort sort = new BubbleSort();
+        sort.sort(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+
+    @Test
+    public void selectionSortTest(){
+        int[] arr = makeArr();
+        System.out.println(Arrays.toString(arr));
+        Sort sort = new SelectionSort();
         sort.sort(arr);
         System.out.println(Arrays.toString(arr));
     }
