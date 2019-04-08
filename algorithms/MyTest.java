@@ -1,8 +1,5 @@
 import org.junit.Test;
-import sort.BubbleSort;
-import sort.QuickSort;
-import sort.SelectionSort;
-import sort.Sort;
+import sort.*;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -50,6 +47,15 @@ public class MyTest {
         int[] arr = makeArr();
         System.out.println(Arrays.toString(arr));
         Sort sort = new SelectionSort();
+        sort.sort(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+
+    @Test
+    public void insertionSortTest(){
+        int[] arr = makeArr();
+        System.out.println(Arrays.toString(arr));
+        Sort sort = new InsertionSort();
         sort.sort(arr);
         System.out.println(Arrays.toString(arr));
     }
