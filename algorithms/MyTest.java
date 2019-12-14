@@ -15,17 +15,17 @@ public class MyTest {
 
     }
 
-    private int[] makeArr(){
+    private int[] makeArr() {
         int[] arr = new int[20];
         Random random = new Random();
-        for (int i = 0; i < 20; i++){
+        for (int i = 0; i < 20; i++) {
             arr[i] = random.nextInt(20);
         }
         return arr;
     }
 
     @Test
-    public void quickSortTest(){
+    public void quickSortTest() {
         int[] arr = makeArr();
         System.out.println(Arrays.toString(arr));
         Sort sort = new QuickSort();
@@ -34,7 +34,7 @@ public class MyTest {
     }
 
     @Test
-    public void bubbleSortTest(){
+    public void bubbleSortTest() {
         int[] arr = makeArr();
         System.out.println(Arrays.toString(arr));
         Sort sort = new BubbleSort();
@@ -43,7 +43,7 @@ public class MyTest {
     }
 
     @Test
-    public void selectionSortTest(){
+    public void selectionSortTest() {
         int[] arr = makeArr();
         System.out.println(Arrays.toString(arr));
         Sort sort = new SelectionSort();
@@ -52,7 +52,7 @@ public class MyTest {
     }
 
     @Test
-    public void insertionSortTest(){
+    public void insertionSortTest() {
         int[] arr = makeArr();
         System.out.println(Arrays.toString(arr));
         Sort sort = new InsertionSort();
