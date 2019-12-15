@@ -15,10 +15,12 @@ public class MyTest {
 
     }
 
+    private static final int ARRAY_LENGTH = 20;
+
     private int[] makeArr() {
-        int[] arr = new int[20];
+        int[] arr = new int[ARRAY_LENGTH];
         Random random = new Random();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < arr.length; i++) {
             arr[i] = random.nextInt(20);
         }
         return arr;

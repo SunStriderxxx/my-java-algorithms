@@ -20,8 +20,8 @@ public class QuickSort implements Sort {
         int right = r;
         int i = arr[l];
         while (l != r) {
-            while (r > l && arr[--r] > i) ;
-            while (l < r && arr[++l] < i) ;
+            while (r > l && arr[--r] > i) {};
+            while (l < r && arr[++l] < i) {};
             if (l >= r) {
                 break;
             }
@@ -30,7 +30,6 @@ public class QuickSort implements Sort {
         exchange(arr, left, l);
         part(arr, left, l);
         part(arr, l + 1, right);
-        return;
     }
 
     private void exchange(int[] arr, int l, int r) {
