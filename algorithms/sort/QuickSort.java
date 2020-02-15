@@ -1,10 +1,15 @@
 package sort;
 
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 /**
  * @author Fcb
  * @date 2019/3/8
  * @description 自己靠感觉手写的快速排序
  */
+@Builder
+@NoArgsConstructor
 public class QuickSort implements Sort {
 
     @Override

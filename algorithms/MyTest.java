@@ -15,50 +15,153 @@ public class MyTest {
 
     }
 
-    private static final int ARRAY_LENGTH = 20;
+    // for test
+    public int[] generateRandomArray(int size, int value) {
+        //Math.random() -> double [0,1)
+        //(int) ((size + 1) * Math.random()) -> [0,size] 整数，等概率
+        //size = 6, size + 1 = 7;
+        //Math.random() -> [0,1) * 7 -> [0,7) double
+        //double -> int [0,6] -> int
 
-    private int[] makeArr() {
-        int[] arr = new int[ARRAY_LENGTH];
-        Random random = new Random();
+        //生成长度随机的数组
+        int[] arr = new int[(int) ((size + 1) * Math.random())];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = random.nextInt(20);
+            arr[i] = (int) ((value + 1) * Math.random()) - (int) (value * Math.random());
         }
         return arr;
     }
 
+    // for test
+    public void rightMethod(int[] arr) {
+        Arrays.sort(arr);
+    }
+
+    public int[] copyArray(int[] arr) {
+        if (arr == null) {
+            return null;
+        }
+        int[] res = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            res[i] = arr[i];
+        }
+        return res;
+    }
+
+    // for test
+    public void printArray(int[] arr) {
+        if (arr == null) {
+            return;
+        }
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+
+    // for test
+    public boolean isEquals(int[] arr1, int[] arr2) {
+        if ((arr1 == null && arr2 != null) || (arr1 != null && arr2 == null)) {
+            return false;
+        }
+        if (arr1 == null && arr2 == null) {
+            return true;
+        }
+        if (arr1.length != arr2.length) {
+            return false;
+        }
+        for (int i = 0; i < arr1.length; i++) {
+            if (arr1[i] != arr2[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static final int TEST_TIMES = 10000;
+    private static final int SIZE = 20;
+    private static final int VALUE = 100;
+
     @Test
     public void quickSortTest() {
-        int[] arr = makeArr();
-        System.out.println(Arrays.toString(arr));
+        boolean succeed = true;
         Sort sort = new QuickSort();
-        sort.sort(arr);
-        System.out.println(Arrays.toString(arr));
+        for (int i = 0; i < TEST_TIMES; i++) {
+            int[] arr1 = generateRandomArray(SIZE, VALUE);
+            int[] arr2 = copyArray(arr1);
+            int[] arr3 = copyArray(arr1);
+            sort.sort(arr1);
+            rightMethod(arr2);
+            if (!isEquals(arr1, arr2)) {
+                succeed = false;
+                printArray(arr1);
+                printArray(arr2);
+                printArray(arr3);
+                break;
+            }
+        }
+        System.out.println(succeed ? "Nice!" : "Fucking fucked!");
     }
 
     @Test
     public void bubbleSortTest() {
-        int[] arr = makeArr();
-        System.out.println(Arrays.toString(arr));
+        boolean succeed = true;
         Sort sort = new BubbleSort();
-        sort.sort(arr);
-        System.out.println(Arrays.toString(arr));
+        for (int i = 0; i < TEST_TIMES; i++) {
+            int[] arr1 = generateRandomArray(SIZE, VALUE);
+            int[] arr2 = copyArray(arr1);
+            int[] arr3 = copyArray(arr1);
+            sort.sort(arr1);
+            rightMethod(arr2);
+            if (!isEquals(arr1, arr2)) {
+                succeed = false;
+                printArray(arr1);
+                printArray(arr2);
+                printArray(arr3);
+                break;
+            }
+        }
+        System.out.println(succeed ? "Nice!" : "Fucking fucked!");
     }
 
     @Test
     public void selectionSortTest() {
-        int[] arr = makeArr();
-        System.out.println(Arrays.toString(arr));
+        boolean succeed = true;
         Sort sort = new SelectionSort();
-        sort.sort(arr);
-        System.out.println(Arrays.toString(arr));
+        for (int i = 0; i < TEST_TIMES; i++) {
+            int[] arr1 = generateRandomArray(SIZE, VALUE);
+            int[] arr2 = copyArray(arr1);
+            int[] arr3 = copyArray(arr1);
+            sort.sort(arr1);
+            rightMethod(arr2);
+            if (!isEquals(arr1, arr2)) {
+                succeed = false;
+                printArray(arr1);
+                printArray(arr2);
+                printArray(arr3);
+                break;
+            }
+        }
+        System.out.println(succeed ? "Nice!" : "Fucking fucked!");
     }
 
     @Test
     public void insertionSortTest() {
-        int[] arr = makeArr();
-        System.out.println(Arrays.toString(arr));
+        boolean succeed = true;
         Sort sort = new InsertionSort();
-        sort.sort(arr);
-        System.out.println(Arrays.toString(arr));
+        for (int i = 0; i < TEST_TIMES; i++) {
+            int[] arr1 = generateRandomArray(SIZE, VALUE);
+            int[] arr2 = copyArray(arr1);
+            int[] arr3 = copyArray(arr1);
+            sort.sort(arr1);
+            rightMethod(arr2);
+            if (!isEquals(arr1, arr2)) {
+                succeed = false;
+                printArray(arr1);
+                printArray(arr2);
+                printArray(arr3);
+                break;
+            }
+        }
+        System.out.println(succeed ? "Nice!" : "Fucking fucked!");
     }
 }

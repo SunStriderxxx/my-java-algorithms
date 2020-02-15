@@ -1,10 +1,15 @@
 package sort;
 
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 /**
  * @author FCB
  * @date 2019-04-08
  * @description 插入排序
  */
+@Builder
+@NoArgsConstructor
 public class InsertionSort implements Sort {
     @Override
     public void sort(int[] arr) {
