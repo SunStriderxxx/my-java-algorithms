@@ -2,11 +2,12 @@ package sort;
 
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import problems.NetherlandsFlag;
 
 /**
  * @author Fcb
  * @date 2019/3/8
- * @description 自己靠感觉手写的快速排序
+ * @description 快速排序，时间复杂度O(nlogn)，空间复杂度O(logn)
  */
 @Builder
 @NoArgsConstructor
@@ -14,27 +15,16 @@ public class QuickSort implements Sort {
 
     @Override
     public void sort(int[] arr) {
-        part(arr, 0, arr.length);
+        part(arr, 0, arr.length - 1);
     }
 
     public void part(int[] arr, int l, int r) {
-        if (l == r) {
-            return;
+        if (l < r){
+            NetherlandsFlag netherlandsFlag = new NetherlandsFlag();
+            int[] partition = netherlandsFlag.partition(arr, l, r, arr[r]);
+            part(arr, 0, partition[0] - 1);
+            part(arr, partition[1] + 1, r);
         }
-        int left = l;
-        int right = r;
-        int i = arr[l];
-        while (l != r) {
-            while (r > l && arr[--r] > i) {};
-            while (l < r && arr[++l] < i) {};
-            if (l >= r) {
-                break;
-            }
-            exchange(arr, l, r);
-        }
-        exchange(arr, left, l);
-        part(arr, left, l);
-        part(arr, l + 1, right);
     }
 
     private void exchange(int[] arr, int l, int r) {
@@ -42,6 +32,5 @@ public class QuickSort implements Sort {
         arr[l] = arr[r];
         arr[r] = i;
     }
-
 
 }

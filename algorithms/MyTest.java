@@ -1,8 +1,9 @@
 import org.junit.Test;
+import problems.NetherlandsFlag;
+import problems.SmallSum;
 import sort.*;
 
 import java.util.Arrays;
-import java.util.Random;
 
 /**
  * @Author: Fcb
@@ -12,7 +13,9 @@ import java.util.Random;
 public class MyTest {
 
     public static void main(String[] args) {
-
+        String s = "aa";
+        String substring = s.substring(1);
+        System.out.println(substring);
     }
 
     // for test
@@ -148,6 +151,78 @@ public class MyTest {
     public void insertionSortTest() {
         boolean succeed = true;
         Sort sort = new InsertionSort();
+        for (int i = 0; i < TEST_TIMES; i++) {
+            int[] arr1 = generateRandomArray(SIZE, VALUE);
+            int[] arr2 = copyArray(arr1);
+            int[] arr3 = copyArray(arr1);
+            sort.sort(arr1);
+            rightMethod(arr2);
+            if (!isEquals(arr1, arr2)) {
+                succeed = false;
+                printArray(arr1);
+                printArray(arr2);
+                printArray(arr3);
+                break;
+            }
+        }
+        System.out.println(succeed ? "Nice!" : "Fucking fucked!");
+    }
+
+    @Test
+    public void mergeSortTest() {
+        boolean succeed = true;
+        Sort sort = new MergeSort();
+        for (int i = 0; i < TEST_TIMES; i++) {
+            int[] arr1 = generateRandomArray(SIZE, VALUE);
+            int[] arr2 = copyArray(arr1);
+            int[] arr3 = copyArray(arr1);
+            sort.sort(arr1);
+            rightMethod(arr2);
+            if (!isEquals(arr1, arr2)) {
+                succeed = false;
+                printArray(arr1);
+                printArray(arr2);
+                printArray(arr3);
+                break;
+            }
+        }
+        System.out.println(succeed ? "Nice!" : "Fucking fucked!");
+    }
+
+    @Test
+    public void getSmallSumTest() {
+        boolean succeed = true;
+        SmallSum smallSum = new SmallSum();
+        for (int i = 0; i < TEST_TIMES; i++) {
+            int[] arr1 = generateRandomArray(SIZE, VALUE);
+            int[] arr2 = copyArray(arr1);
+            int[] arr3 = copyArray(arr1);
+            smallSum.getSmallSum(arr1);
+            rightMethod(arr2);
+            if (!isEquals(arr1, arr2)) {
+                succeed = false;
+                printArray(arr1);
+                printArray(arr2);
+                printArray(arr3);
+                break;
+            }
+        }
+        System.out.println(succeed ? "Nice!" : "Fucking fucked!");
+    }
+
+    @Test
+    public void netherlandsFlagTest(){
+        int[] arr = new int[]{3,2,5,4,1,6,1,2};
+        NetherlandsFlag netherlandsFlag = new NetherlandsFlag();
+        int[] partition = netherlandsFlag.partition(arr, 0, arr.length - 1, 1);
+        System.out.println(Arrays.toString(arr));
+        System.out.println(Arrays.toString(partition));
+    }
+
+    @Test
+    public void heapSortTest() {
+        boolean succeed = true;
+        Sort sort = new HeapSort();
         for (int i = 0; i < TEST_TIMES; i++) {
             int[] arr1 = generateRandomArray(SIZE, VALUE);
             int[] arr2 = copyArray(arr1);
