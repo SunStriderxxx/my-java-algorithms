@@ -3,7 +3,7 @@ package sort;
 /**
  * @author Fcb
  * @date 2020/2/15
- * @description 归并排序，时间复杂度O(nlogn)，空间复杂度O(n)
+ * @description 归并排序，时间复杂度O(nlogn)，空间复杂度O(n)，可以稳定，合并的时候先排左边
  */
 public class MergeSort implements Sort {
 
@@ -19,7 +19,7 @@ public class MergeSort implements Sort {
         if (l == r) {
             return;
         }
-        int mid = l + (r - l) >> 1;
+        int mid = l + ((r - l) >> 1);
         mergeSort(arr, l, mid);//T(n/2)
         mergeSort(arr, mid + 1, r);//T(n/2)
         merge(arr, l, mid, r);//O(n)
@@ -34,7 +34,7 @@ public class MergeSort implements Sort {
         int index2 = mid + 1;
         //两个下标都没有越界
         while (index1 <= mid && index2 <= r){
-            sort[index++] = arr[index1] < arr[index2] ? arr[index1++] : arr[index2++];
+            sort[index++] = arr[index1] <= arr[index2] ? arr[index1++] : arr[index2++];
         }
         //外排一次以后有且只有一个下标越界
         while (index1 <= mid){

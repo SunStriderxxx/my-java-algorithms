@@ -3,7 +3,7 @@ package sort;
 /**
  * @author Fcb
  * @date 2020/2/19
- * @description 堆排序，时间复杂度O(nlogn)，空间复杂度O(1)
+ * @description 堆排序，时间复杂度O(nlogn)，空间复杂度O(1)，不稳定
  */
 public class HeapSort implements Sort {
 

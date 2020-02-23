@@ -7,7 +7,7 @@ import problems.NetherlandsFlag;
 /**
  * @author Fcb
  * @date 2019/3/8
- * @description 快速排序，时间复杂度O(nlogn)，空间复杂度O(logn)
+ * @description 快速排序，时间复杂度O(nlogn)，空间复杂度O(logn)，不稳定
  */
 @Builder
 @NoArgsConstructor

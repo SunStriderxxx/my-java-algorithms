@@ -1,9 +1,11 @@
+import domian.Student;
 import org.junit.Test;
 import problems.NetherlandsFlag;
 import problems.SmallSum;
 import sort.*;
 
 import java.util.Arrays;
+import java.util.PriorityQueue;
 
 /**
  * @Author: Fcb
@@ -11,12 +13,6 @@ import java.util.Arrays;
  * @Description: 测试类
  */
 public class MyTest {
-
-    public static void main(String[] args) {
-        String s = "aa";
-        String substring = s.substring(1);
-        System.out.println(substring);
-    }
 
     // for test
     public int[] generateRandomArray(int size, int value) {
@@ -238,5 +234,31 @@ public class MyTest {
             }
         }
         System.out.println(succeed ? "Nice!" : "Fucking fucked!");
+    }
+
+    @Test
+    public void compatatorTest(){
+        Student student1 = new Student("小明", 1, 12);
+        Student student2 = new Student("小红", 2, 11);
+        Student student3 = new Student("小刚", 3, 10);
+        Student[] arr = new Student[]{student3, student2, student1};
+        for (int i = 0; i < arr.length; i++){
+            System.out.println(arr[i]);
+        }
+        System.out.println("-----------------------");
+        Arrays.sort(arr, new MyComparator());
+        for (int i = 0; i < arr.length; i++){
+            System.out.println(arr[i]);
+        }
+        System.out.println("-----------------------");
+        //堆结构,id小的放在头部
+        PriorityQueue<Student> heap = new PriorityQueue<>(new MyComparator());
+        heap.add(student1);
+        heap.add(student2);
+        heap.add(student3);
+
+        while (!heap.isEmpty()){
+            System.out.println(heap.poll());
+        }
     }
 }

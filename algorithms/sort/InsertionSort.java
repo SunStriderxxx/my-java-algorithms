@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 /**
  * @author FCB
  * @date 2019-04-08
- * @description 插入排序，时间复杂度O(n^2)，空间复杂度O(1)
+ * @description 插入排序，时间复杂度O(n^2)，空间复杂度O(1)，可以稳定
  */
 @Builder
 @NoArgsConstructor
