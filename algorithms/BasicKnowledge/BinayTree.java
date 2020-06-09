@@ -1,5 +1,7 @@
 package BasicKnowledge;
 
+import java.util.Stack;
+
 /**
  * @author Fcb
  * @date 2020/6/4
@@ -48,24 +50,81 @@ public class BinayTree {
     }
 
     /**
-     *  TODO 非递归先序遍历
+     *  递归后序遍历
+     */
+    public void postOrder(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+        postOrder(node.left);
+        postOrder(node.right);
+        System.out.println("val is " + node.val);
+    }
+
+    /**
+     *  非递归先序遍历
      */
     public void preOrderNonRecur(TreeNode node) {
-
+        if (node == null) {
+            return;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(node);
+        while (!stack.isEmpty()) {
+            TreeNode pop = stack.pop();
+            System.out.println("val is " + pop.val);
+            if (pop.right != null) {
+                stack.push(pop.right);
+            }
+            if (pop.left != null) {
+                stack.push(pop.left);
+            }
+        }
     }
 
     /**
-     *  TODO 非递归中序遍历
+     *  非递归中序遍历
      */
     public void inOrderNonRecur(TreeNode node) {
-
+        if (node == null) {
+            return;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        while (!stack.isEmpty() || node != null) {
+            if (node != null) {
+                stack.push(node);
+                node = node.left;
+            } else {
+                node = stack.pop();
+                System.out.println("val is " + node.val);
+                node = node.right;
+            }
+        }
     }
 
     /**
-     *  TODO 非递归后序遍历
+     *  非递归后序遍历
      */
     public void postOrderNonRecur(TreeNode node) {
-
+        if (node == null) {
+            return;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        Stack<TreeNode> reverseOrder = new Stack<>();
+        stack.push(node);
+        while (!stack.isEmpty()) {
+            TreeNode pop = stack.pop();
+            reverseOrder.push(pop);
+            if (pop.left != null) {
+                stack.push(pop.left);
+            }
+            if (pop.right != null) {
+                stack.push(pop.right);
+            }
+        }
+        while (!reverseOrder.isEmpty()) {
+            System.out.println("val is " + reverseOrder.pop().val);
+        }
     }
 
     /**
@@ -92,6 +151,22 @@ public class BinayTree {
             return -1;
         }
         return Math.max(leftLevel, rightLevel + 1);
+    }
+
+    public static void main(String[] args) {
+        TreeNode o = new TreeNode(1);
+        o.left = new TreeNode(2);
+        o.left.left = new TreeNode(4);
+        o.left.right = new TreeNode(5);
+        o.right = new TreeNode(3);
+
+        BinayTree test = new BinayTree();
+        test.preOrder(o);
+        test.inOrder(o);
+        test.postOrder(o);
+        test.preOrderNonRecur(o);
+        test.inOrderNonRecur(o);
+        test.postOrderNonRecur(o);
     }
 
 }
