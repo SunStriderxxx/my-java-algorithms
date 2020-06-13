@@ -1,4 +1,4 @@
-package BasicKnowledge;
+package basicknowledge;
 
 import java.util.Stack;
 
