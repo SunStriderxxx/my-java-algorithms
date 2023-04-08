@@ -10,7 +10,7 @@ import java.util.Stack;
  *
  * 二叉树解题多考虑用递归，因为确实很好用，递归能遍历一个节点三次：当前节点，去其左子节点并返回，去其右子节点并返回。
  */
-public class BinayTree {
+public class BinaryTree {
 
     public static class TreeNode {
         private int val;
@@ -160,12 +160,12 @@ public class BinayTree {
         o.left.right = new TreeNode(5);
         o.right = new TreeNode(3);
 
-        BinayTree test = new BinayTree();
-        test.preOrder(o);
-        test.inOrder(o);
-        test.postOrder(o);
-        test.preOrderNonRecur(o);
-        test.inOrderNonRecur(o);
+        BinaryTree test = new BinaryTree();
+//        test.preOrder(o);
+//        test.inOrder(o);
+//        test.postOrder(o);
+//        test.preOrderNonRecur(o);
+//        test.inOrderNonRecur(o);
         test.postOrderNonRecur(o);
     }
 
